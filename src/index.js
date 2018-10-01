@@ -6,6 +6,8 @@ import App from "./App"
 
 import "bootstrap/dist/js/bootstrap.js"
 import "bootstrap/dist/css/bootstrap.css"
+import "open-iconic/font/css/open-iconic.css"
+import "open-iconic/font/css/open-iconic-bootstrap.css"
 import "./index.css"
 
 const root = document.getElementById("root")
