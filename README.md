@@ -1,7 +1,9 @@
-# OpenIconic Search
-> A search tool for Open Iconic icons, to help you find your hotness.
-
-[Check out the site](https://codys.club/open-iconic-search)
+<div align="center">
+  <h1>Open Iconic Search</h1>
+  <small><i>A search tool for Open Iconic to help you find your hotness.</i></small>
+  <br/>
+  <strong><a href="https://codys.club/open-iconic-search">Check out the site</a></strong>
+</div>
 
 # License
 
