@@ -6,4 +6,5 @@ body {
 
 .chrome-picker {
     position: absolute;
+    right: 0;
 }

@@ -48,7 +48,10 @@ export default class App extends Component<*, AppState> {
                                 <div className="col-sm-6 py-2">
                                     <p className="text-white my-1">
                                         <i className="oi oi-magnifying-glass mr-2" />
-                                        OpenIconic Search Tool
+                                        <strong>Open Iconic Search</strong>
+                                        <small className="text-light pl-2">
+                                            <i>Find your hotness</i>
+                                        </small>
                                     </p>
                                 </div>
                                 <div className="col-sm-6 text-sm-right py-2">
@@ -83,29 +86,24 @@ export default class App extends Component<*, AppState> {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-light">
+                    <div className="bg-light" style={{ borderBottom: "solid 1px #ddd" }}>
                         <div className="container py-4">
                             <div className="row">
-                                <div className="col-12">
-                                    <div
-                                        style={{ display: "inline-block", width: "65%" }}>
-                                        <input
-                                            name="iconName"
-                                            type="text"
-                                            value={this.state.search}
-                                            onChange={this.handleSearchChange}
-                                            className="form-control"
-                                            placeholder="Search icons by name..."
-                                        />
-                                    </div>
-                                    <div
-                                        style={{ display: "inline-block", width: "15%" }}
-                                        className="ml-4">
-                                        <IconColorPicker
-                                            color={this.state.color}
-                                            handleColorChange={this.handleColorChange}
-                                        />
-                                    </div>
+                                <div className="col-7">
+                                    <input
+                                        name="iconName"
+                                        type="text"
+                                        value={this.state.search}
+                                        onChange={this.handleSearchChange}
+                                        className="form-control"
+                                        placeholder="Search icons by name..."
+                                    />
+                                </div>
+                                <div className="col-sm-5 text-right">
+                                    <IconColorPicker
+                                        color={this.state.color}
+                                        handleColorChange={this.handleColorChange}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -217,7 +215,10 @@ class Icon extends React.Component<{ icon: IconContext, color: string }, *> {
                             <div className="col-sm-3">
                                 <i
                                     className={`oi oi-${this.props.icon.name}`}
-                                    style={{ color: this.props.color }}
+                                    style={{
+                                        color: this.props.color,
+                                        fontSize: 17,
+                                    }}
                                 />
                             </div>
                             <div className="col-sm-9">
@@ -246,15 +247,11 @@ class IconColorPicker extends React.Component<IconColorPickerProps, *> {
     render() {
         return (
             <span>
-                Icon color:{" "}
                 <button
-                    className="btn btn-sm"
+                    className="btn btn-sm mt-1"
                     onClick={this.toggleEditing}
                     style={{ color: "white", backgroundColor: this.props.color }}>
-                    <i
-                        className="oi oi-loop-circular"
-                        style={{ verticalAlign: "text-top" }}
-                    />
+                    Icon color
                 </button>
                 {this.state.editing ? (
                     <ChromePicker
