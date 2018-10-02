@@ -5,12 +5,9 @@
   <strong><a href="https://codys.club/open-iconic-search">Check out the site</a></strong>
 </div>
 
-# License
-
-MIT
-
 ---
 
 > [codys.club](https://codys.club) &nbsp;&middot;&nbsp;
 > GitHub [@CodyReichert](https://github.com/CodyReichert) &nbsp;&middot;&nbsp;
-> Twitter [@CodyReichert](https://twitter.com/CodyReichert)
+> Twitter [@CodyReichert](https://twitter.com/CodyReichert) &nbsp;&middot;&nbsp;
+> Licensed under MIT
