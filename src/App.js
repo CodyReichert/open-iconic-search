@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from "react"
+import { ChromePicker } from "react-color"
 
 type IconContext = {
     src: string,
@@ -9,17 +10,21 @@ type IconContext = {
 
 type AppState = {
     search: string,
+    color: string,
 }
 
 export default class App extends Component<*, AppState> {
     state = {
         search: "",
+        color: "#333",
     }
 
     handleSearchChange = (e: SyntheticInputEvent<*>) =>
         this.setState({
             search: e.target.value,
         })
+
+    handleColorChange = (color: string) => this.setState({ color })
 
     handleClearSearch = () => this.setState({ search: "" })
 
@@ -78,8 +83,9 @@ export default class App extends Component<*, AppState> {
                     <div className="bg-light">
                         <div className="container py-4">
                             <div className="row">
-                                <div className="col-7">
-                                    <div className="form-row">
+                                <div className="col-12">
+                                    <div
+                                        style={{ display: "inline-block", width: "65%" }}>
                                         <input
                                             name="iconName"
                                             type="text"
@@ -87,6 +93,14 @@ export default class App extends Component<*, AppState> {
                                             onChange={this.handleSearchChange}
                                             className="form-control"
                                             placeholder="Search icons by name..."
+                                        />
+                                    </div>
+                                    <div
+                                        style={{ display: "inline-block", width: "15%" }}
+                                        className="ml-2">
+                                        <IconColorPicker
+                                            color={this.state.color}
+                                            handleColorChange={this.handleColorChange}
                                         />
                                     </div>
                                 </div>
@@ -118,7 +132,7 @@ export default class App extends Component<*, AppState> {
                             ) : null}
                         </div>
                         {icons.map(icon => (
-                            <Icon key={icon.src} icon={icon} />
+                            <Icon key={icon.src} icon={icon} color={this.state.color} />
                         ))}
                     </div>
                 </div>
@@ -127,7 +141,7 @@ export default class App extends Component<*, AppState> {
     }
 }
 
-class Icon extends React.Component<{ icon: IconContext }, *> {
+class Icon extends React.Component<{ icon: IconContext, color: string }, *> {
     state = { hovering: false }
     toggleHovering = () => this.setState({ hovering: !this.state.hovering })
 
@@ -171,10 +185,9 @@ class Icon extends React.Component<{ icon: IconContext }, *> {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-sm-3">
-                                <img
-                                    width="15"
-                                    alt={this.props.icon.name}
-                                    src={this.props.icon.src}
+                                <i
+                                    className={`oi oi-${this.props.icon.name}`}
+                                    style={{ color: this.props.color }}
                                 />
                             </div>
                             <div className="col-sm-9">
@@ -186,6 +199,40 @@ class Icon extends React.Component<{ icon: IconContext }, *> {
                     </div>
                 </div>
             </div>
+        )
+    }
+}
+
+type IconColorPickerProps = {
+    color: string,
+    handleColorChange: string => void,
+}
+
+class IconColorPicker extends React.Component<IconColorPickerProps, *> {
+    state = { editing: false }
+
+    toggleEditing = () => this.setState({ editing: !this.state.editing })
+
+    render() {
+        return (
+            <span>
+                Icon color:{" "}
+                <button
+                    className="btn btn-sm"
+                    onClick={this.toggleEditing}
+                    style={{ color: "white", backgroundColor: this.props.color }}>
+                    <i
+                        className="oi oi-loop-circular"
+                        style={{ verticalAlign: "text-top" }}
+                    />
+                </button>
+                {this.state.editing ? (
+                    <ChromePicker
+                        color={this.props.color}
+                        onChangeComplete={c => this.props.handleColorChange(c.hex)}
+                    />
+                ) : null}
+            </span>
         )
     }
 }

@@ -8,6 +8,7 @@
     "open-iconic": "1.1.1",
     "popper.js": "^1.14.4",
     "react": "^16.5.2",
+    "react-color": "^2.14.1",
     "react-dom": "^16.5.2",
     "react-scripts": "1.1.5"
   },
