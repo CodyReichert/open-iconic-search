@@ -2,6 +2,8 @@
 
 import React, { Component } from "react"
 import { ChromePicker } from "react-color"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 type IconContext = {
     src: string,
@@ -16,7 +18,7 @@ type AppState = {
 export default class App extends Component<*, AppState> {
     state = {
         search: "",
-        color: "#333",
+        color: "#CC07A2",
     }
 
     handleSearchChange = (e: SyntheticInputEvent<*>) =>
@@ -38,6 +40,7 @@ export default class App extends Component<*, AppState> {
 
         return (
             <div>
+                <ToastContainer />
                 <div className="fixed-top">
                     <div className="bg-primary">
                         <div className="container">
@@ -97,7 +100,7 @@ export default class App extends Component<*, AppState> {
                                     </div>
                                     <div
                                         style={{ display: "inline-block", width: "15%" }}
-                                        className="ml-2">
+                                        className="ml-4">
                                         <IconColorPicker
                                             color={this.state.color}
                                             handleColorChange={this.handleColorChange}
@@ -108,7 +111,7 @@ export default class App extends Component<*, AppState> {
                         </div>
                     </div>
                 </div>
-                <div className="container" style={{ paddingTop: 175 }}>
+                <div className="container mb-3" style={{ paddingTop: 175 }}>
                     <div className="row">
                         <div className="col-sm-6">
                             <h3 className="mb-3">
@@ -136,6 +139,45 @@ export default class App extends Component<*, AppState> {
                         ))}
                     </div>
                 </div>
+                <div className="bg-dark text-light">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-6 my-3">
+                                <small>
+                                    Made with{" "}
+                                    <i className="oi oi-heart" style={{ color: "red" }} />{" "}
+                                    in Texas by{" "}
+                                    <a
+                                        href="https://twitter.com/CodyReichert"
+                                        className="text-light"
+                                        target="_blank"
+                                        rel="noreferrer noopener">
+                                        @CodyReichert
+                                    </a>
+                                </small>
+                            </div>
+                            <div className="col-sm-6 my-3 text-right">
+                                <small>
+                                    <a
+                                        rel="noreferrer noopener"
+                                        target="_blank"
+                                        className="text-white"
+                                        href="https://twitter.com/CodyReichert">
+                                        Twitter
+                                    </a>{" "}
+                                    &middot;{" "}
+                                    <a
+                                        rel="noreferrer noopener"
+                                        target="_blank"
+                                        className="text-white"
+                                        href="https://github.com/CodyReichert">
+                                        GitHub
+                                    </a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -153,25 +195,13 @@ class Icon extends React.Component<{ icon: IconContext, color: string }, *> {
         document.execCommand("copy")
         document.body && document.body.removeChild(el)
 
-        return this.setState(
-            {
-                copied: true,
-            },
-            () =>
-                setTimeout(
-                    () =>
-                        this.setState({
-                            copied: false,
-                        }),
-                    3000
-                )
-        )
+        return toast(`Copied '${this.props.icon.name}' to clipboard.`)
     }
 
     render() {
         const cardStyle = {
             cursor: "pointer",
-            boxShadow: this.state.hovering ? "#eee 0 0 3px" : "none",
+            boxShadow: this.state.hovering ? `${this.props.color} 0 0 3px` : "none",
         }
 
         return (
