@@ -18,7 +18,7 @@ type AppState = {
 export default class App extends Component<*, AppState> {
     state = {
         search: "",
-        color: "#CC07A2",
+        color: "#6610f2",
     }
 
     handleSearchChange = (e: SyntheticInputEvent<*>) =>
@@ -50,7 +50,7 @@ export default class App extends Component<*, AppState> {
                                         <i className="oi oi-magnifying-glass mr-2" />
                                         <strong>Open Iconic Search</strong>
                                         <small className="text-light pl-2">
-                                            <i>Find your hotness</i>
+                                            <i>Find your icon hotness</i>
                                         </small>
                                     </p>
                                 </div>
