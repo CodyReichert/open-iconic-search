@@ -118,7 +118,7 @@ export default class App extends Component<*, AppState> {
                                 <small
                                     className="text-muted ml-2"
                                     style={{ fontSize: 12 }}>
-                                    <i>(Click an icon to copy it's name)</i>
+                                    <i>(Click an icon to copy its name)</i>
                                 </small>
                             </h3>
                         </div>
