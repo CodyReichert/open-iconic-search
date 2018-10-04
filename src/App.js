@@ -109,7 +109,7 @@ export default class App extends Component<*, AppState> {
                         </div>
                     </div>
                 </div>
-                <div className="container mb-3" style={{ paddingTop: 175 }}>
+                <div className="container mb-5 my-5 my-sm-0" style={{ paddingTop: 175 }}>
                     <div className="row">
                         <div className="col-sm-6">
                             <h3 className="mb-3">
@@ -203,7 +203,7 @@ class Icon extends React.Component<{ icon: IconContext, color: string }, *> {
         }
 
         return (
-            <div className="col-3">
+            <div className="col-6 col-sm-4 col-md-3 text-center text-sm-left">
                 <div
                     onMouseEnter={this.toggleHovering}
                     onMouseLeave={this.toggleHovering}
