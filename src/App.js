@@ -47,11 +47,13 @@ export default class App extends Component<*, AppState> {
                             <div className="row">
                                 <div className="col-sm-6 py-2">
                                     <p className="text-white my-1">
-                                        <i className="oi oi-magnifying-glass mr-2" />
-                                        <strong>Open Iconic Search</strong>
-                                        <small className="text-light pl-2">
-                                            <i>Find your icon hotness</i>
-                                        </small>
+                                        <a className="text-white" href="/">
+                                            <i className="oi oi-magnifying-glass mr-2" />
+                                            <strong>Open Iconic Search</strong>
+                                            <small className="text-light pl-2">
+                                                <i>Find your icon hotness</i>
+                                            </small>
+                                        </a>
                                     </p>
                                 </div>
                                 <div className="col-sm-6 text-sm-right py-2">
@@ -109,7 +111,9 @@ export default class App extends Component<*, AppState> {
                         </div>
                     </div>
                 </div>
-                <div className="container mb-5 my-5 my-sm-0" style={{ paddingTop: 175 }}>
+                <div
+                    className="container mb-5 my-5 my-sm-0"
+                    style={{ minHeight: "95vh", paddingTop: 175 }}>
                     <div className="row">
                         <div className="col-sm-6">
                             <h3 className="mb-3">
@@ -193,7 +197,11 @@ class Icon extends React.Component<{ icon: IconContext, color: string }, *> {
         document.execCommand("copy")
         document.body && document.body.removeChild(el)
 
-        return toast(`Copied '${this.props.icon.name}' to clipboard.`)
+        return toast(
+            <span>
+                Copied <i>{this.props.icon.name}</i> to clipboard!
+            </span>
+        )
     }
 
     render() {
