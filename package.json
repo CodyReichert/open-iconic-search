@@ -1,7 +1,6 @@
 {
   "name": "open-iconic-search",
   "version": "0.0.1",
-  "private": true,
   "homepage": "https://CodyReichert.github.io/open-iconic-search",
   "dependencies": {
     "bootstrap": "^4.1.3",
